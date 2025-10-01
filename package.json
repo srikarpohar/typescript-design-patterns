@@ -1,0 +1,23 @@
+{
+  "name": "typescript-design-patterns",
+  "version": "1.0.0",
+  "description": "Repo consisting of all typescript design patterns useful for coding real world projects",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "jest"
+  },
+  "author": "Srikar Pohar",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.1"
+  }
+}
