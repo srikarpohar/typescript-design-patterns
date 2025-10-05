@@ -5,7 +5,7 @@ const patternName = process.argv[2] || "singleton";
 
 if (patterns[patternName]) {
   console.log(`🚀 Running pattern: ${patternName}\n`);
-  patterns[patternName]();
+  patterns[patternName](...process.argv.slice(3));
 } else {
   console.log("❌ Unknown pattern. Available patterns:");
   console.log(Object.keys(patterns).join(", "));

@@ -1,3 +1,6 @@
+let connections = 0;
+let instances = 0;
+
 /*
   Singleton - this pattern allows creation of a single object for all instances of the class.
   This is useful when you want to share the same object among all instances of this class.
@@ -10,9 +13,12 @@ class DatabaseConnection {
     // instance is accessible from the inside of the class.
     static #instance: DatabaseConnection;
 
+    private instanceNo: number = 0;
+
     // Constructor should always be private to prevent construction of object using new operator.
     private constructor() {
         // can have database initialisation logic for the single instance created.
+        this.instanceNo = ++instances;
     }
 
 
@@ -22,9 +28,13 @@ class DatabaseConnection {
         if(!DatabaseConnection.#instance) {
             // acquire thread lock if using the instance in a multithreading context
             // and then create a new instance.
+            console.log("Creating connection instance for 1st time");
             DatabaseConnection.#instance = new DatabaseConnection();
+        } else {
+            console.log("Reusing same instance.");
         }
 
+        ++connections;
         return DatabaseConnection.#instance;
     }
 
@@ -32,16 +42,16 @@ class DatabaseConnection {
     // which can be executed on its instance.
     public query(statement: string) {
         // use statement to query on the database instance.
+        console.log(`Query ${statement} done using Instance ID: ${this.instanceNo}\n`);
     }
 }
 
 export const runSingletonMethod = () => {
     const conn1 = DatabaseConnection.getInstance();
-    const conn2 = DatabaseConnection.getInstance();
+    conn1.query("select * from users");
 
-    if(conn1 == conn2) {
-        console.log("Same connection is reused in conn2! Singleton pattern achieved 😃");
-    } else {
-        console.log("Different instances created for two connections! ❌");
-    }
+    const conn2 = DatabaseConnection.getInstance();
+    conn2.query("select * from employees");
+
+    console.log(`Total connections created - ${connections}`);
 }

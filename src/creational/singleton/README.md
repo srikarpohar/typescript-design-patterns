@@ -20,6 +20,12 @@ All implementations of the Singleton have these two steps in common:
 
 **Note**: If your code has access to the Singleton class, then it’s able to call the Singleton’s static method. So whenever that method is called, the same object is always returned.
 
+### Testing
+
+1. Using npm start command - `npm run start -- singleton`.
+
+2. Run tests - `npm run test`.
+
 ### Structure
 
 ![Structure](../../../assets/singleton/image.png)
