@@ -28,7 +28,7 @@ All implementations of the Singleton have these two steps in common:
 
 ### Structure
 
-![Structure](../../../assets/singleton/image.png)
+![Structure](../../../assets/singleton/structure.png)
 
 
 ### Usage:

@@ -7,7 +7,7 @@ export const runFactoryMethod = async (
    destination: string = "./default_destination", 
    content: DocumentContent = "hello world", 
 ) => {
-   console.log("Creating renderer objects using factory method ⚒️!!");
+   console.log("Creating renderer objects using factory classes ⚒️!!");
    let pdfDocumentViewer: PDFDocumentViewer;
    let htmlDocumentViewer: HTMLDocumentViewer;
    
@@ -30,7 +30,7 @@ export const runFactoryMethod = async (
          htmlDocumentViewer.render(destination, content);
          break;
    }
-   console.log("Destroying created objects using factory method ❌!!");
+   console.log("Destroying created objects using factory classes ❌!!");
 }
 
 
