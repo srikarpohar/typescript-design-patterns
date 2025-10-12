@@ -1,4 +1,4 @@
-import { HTMLDocumentViewer, PDFDocumentViewer } from "./concrete_factory_class";
+import { HTMLDocumentViewer, PDFDocumentViewer } from "./factory_class";
 import { DocumentContent } from "./product_interface";
 
 
@@ -10,27 +10,26 @@ export const runFactoryMethod = async (
    console.log("Creating renderer objects using factory classes ⚒️!!");
    let pdfDocumentViewer: PDFDocumentViewer;
    let htmlDocumentViewer: HTMLDocumentViewer;
+   let isRendered = false;
    
    switch(type) {
       case 'pdf':
          pdfDocumentViewer = new PDFDocumentViewer();
-         pdfDocumentViewer.render(destination, content);
-         break;
+         isRendered = pdfDocumentViewer.render(destination, content);
       case 'html':
          htmlDocumentViewer = new HTMLDocumentViewer();
-         htmlDocumentViewer.render(destination, content);
-         break;
+         isRendered = htmlDocumentViewer.render(destination, content);
       default:
          // PDF Viewer
          pdfDocumentViewer = new PDFDocumentViewer();
-         pdfDocumentViewer.render(destination, content);
+         isRendered = pdfDocumentViewer.render(destination, content);
 
          // HTML Viewer
          htmlDocumentViewer = new HTMLDocumentViewer();
-         htmlDocumentViewer.render(destination, content);
-         break;
+         isRendered = htmlDocumentViewer.render(destination, content);
    }
    console.log("Destroying created objects using factory classes ❌!!");
+   return isRendered;
 }
 
 

@@ -71,6 +71,7 @@ which will have its own implementation.
     - The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes.
 
 ### Testing
+Testcases are written for success cases.
 
 1. Using npm start command - `npm run start -- factory <type = pdf | html | all> <destination> <content>`.
 

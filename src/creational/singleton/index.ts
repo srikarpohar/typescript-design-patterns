@@ -21,6 +21,9 @@ class DatabaseConnection {
         this.instanceNo = ++instances;
     }
 
+    getInstanceNo() {
+        return this.instanceNo;
+    }
 
     public static getInstance(): DatabaseConnection {
         // if instance is null, create a new instance with initialisation logic
@@ -53,5 +56,5 @@ export const runSingletonMethod = () => {
     const conn2 = DatabaseConnection.getInstance();
     conn2.query("select * from employees");
 
-    console.log(`Total connections created - ${connections}`);
+    console.log(`Total connections created - ${connections}: Instances - ${conn1.getInstanceNo()}, ${conn2.getInstanceNo()}`);
 }
